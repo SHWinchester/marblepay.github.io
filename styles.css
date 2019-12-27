@@ -24,6 +24,18 @@ body {
   height: 100vh;
   position: relative;
 }
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+.flex-container > img {
+  position: absolute;
+  align-content: center;
+  height: 50vh;
+  max-width: 100%;
+  top: 25%;
+  left: 25%;
+}
 .logo-big{
   width: 20vw;
   height: 20vh;
