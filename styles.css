@@ -6,12 +6,6 @@
   margin: 0;
 }
 
-#mc_embed_signup {
-  background: #fff;
-  clear: left;
-  font: 14px Helvetica, Arial, sans-serif;
-}
-
 body {
   background-color: white;
   background-size: cover;
@@ -51,6 +45,8 @@ body {
   margin: 16px;
   cursor: pointer;
   width: max-content;
+  font-size: 16px;
+  font-family: aktiv-grotesk-extended, sans-serif;
 }
 .main-container .button__bordered:hover {
   color: #f15623;
@@ -62,6 +58,7 @@ body {
   text-decoration: underline;
   width: max-content;
   cursor: pointer;
+  font-size: 16px;
 }
 .main-container .button__link:active, .main-container .button__link:hover .main-container .button__link:visited,
 .main-container a:active,

@@ -12,12 +12,6 @@ $color__black: #222;
     margin: 0;
 }
 
-#mc_embed_signup {
-    background: $color__white;
-    clear: left;
-    font: 14px Helvetica, Arial, sans-serif;
-}
-
 body {
     background-color: rgba(255, 255, 255, 1);
     background-size: cover;
@@ -59,6 +53,8 @@ body {
         margin: 16px;
         cursor: pointer;
         width: max-content;
+        font-size: 16px;
+        font-family: aktiv-grotesk-extended, sans-serif;
 
         &:hover {
             color: $color__red;
@@ -72,6 +68,7 @@ body {
         text-decoration: underline;
         width: max-content;
         cursor: pointer;
+        font-size: 16px;
 
         &:active,
         &:hover &:visited {
