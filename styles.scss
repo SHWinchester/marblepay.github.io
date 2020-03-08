@@ -23,6 +23,12 @@ body {
     font-style: normal;
 }
 
+form {
+    input {
+        font-family: aktiv-grotesk-extended, sans-serif;
+    }
+}
+
 .slick-dots li button:before {
     color: $color__white !important;
 }
@@ -40,11 +46,8 @@ body {
     -o-box-sizing: border-box;
     box-sizing: border-box;
 
-    .logo {
-        position: fixed;
-        top: 8px;
-        right: 8px;
-        width: 50px;
+    #partner-button {
+        align-self: flex-end;
     }
 
     .button__bordered {
@@ -80,7 +83,8 @@ body {
         background: transparent;
         border: none;
         border-bottom: 1px solid $color__white;
-        outline: none;
+        outline: none !important;
+        border-radius: 0;
         width: 100%;
         margin-bottom: 16px;
         text-align: center;
@@ -164,7 +168,7 @@ body {
         }
 
         div {
-            margin-bottom: 16px;
+            margin-bottom: 4px;
         }
     }
 
@@ -175,6 +179,11 @@ body {
         align-items: flex-end;
         flex-grow: 1;
         text-align: center;
+        font-size: 10px;
+
+        & a {
+            font-size: 10px;
+        }
 
         .footer__text:first-child {
             text-align: left;
@@ -214,71 +223,144 @@ body {
         background-color: $color__black;
         opacity: 0.95;
         margin: 0 auto;
-        padding: 16px 80px;
         width: 35%;
         text-align: center;
         pointer-events: all;
+        border-radius: 10px;
         -webkit-box-shadow: 1px 2px 30px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 1px 2px 30px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 1px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        display: flex;
+        flex-direction: column;
 
-        .header__modal {
-            font-size: 30px;
-            font-family: big-caslon-fb, serif;
-            font-weight: 800;
-            font-style: normal;
-        }
+        #close-button {
+            padding: 16px 16px 0px 16px;
+            cursor: pointer;
+            align-self: flex-end;
 
-        .button__bordered {
-            &:hover {
-                color: $color__black;
-                background-color: $color__white;
+            &::before {
+                content: 'X';
             }
         }
 
-        .button__disabled {
-            opacity: 0.5;
-            cursor: default;
+        .modal__wrapper {
+            padding: 0px 80px 24px 80px;
 
-            &:hover {
-                color: $color__white;
-                background-color: transparent;
-            }
-        }
-
-        input {
-            margin: 24px auto;
-
-            &::placeholder {
-                font-size: 18px;
-            }
-        }
-
-        #request-content,
-        #partner-content {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #partner-content {
-            h5 {
-                margin-bottom: 16px;
-            }
-        }
-
-        #request-content {
-            p {
-                margin-bottom: 34px;
+            .header__modal {
+                font-size: 30px;
+                font-family: big-caslon-fb, serif;
+                font-weight: 800;
+                font-style: normal;
             }
 
-            .request-info {
-                width: 75% !important;
-                display: flex;
+            .button__bordered {
+                &:hover {
+                    color: $color__black;
+                    background-color: $color__white;
+                }
+            }
+
+            .button__disabled {
+                opacity: 0.5;
+                cursor: default;
+
+                &:hover {
+                    color: $color__white;
+                    background-color: transparent;
+                }
+            }
+
+            input {
+                margin: 24px auto;
+
+                &::placeholder {
+                    font-size: 18px;
+                }
+
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+
+            #request-content,
+            #partner-content {
+                display: none;
                 flex-direction: column;
+                align-items: center;
+            }
+
+            #partner-content {
+                h5 {
+                    margin-bottom: 16px;
+                }
+
+                #no-account-alert {
+                    visibility: hidden;
+                }
+            }
+
+            #request-content {
+                p {
+                    margin-bottom: 34px;
+                }
+
+                .request-info {
+                    width: 75% !important;
+                    display: flex;
+                    flex-direction: column;
+                }
             }
         }
 
+    }
+}
+
+.pp__container {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 24px 0;
+
+    div {
+        margin: 16px;
+    }
+
+    .header,
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+    .header {
+        font-weight: bold;
+    }
+
+    .footer {
+        align-self: flex-start;
+    }
+
+    .section__header {
+        font-family: big-caslon-fb, serif;
+        font-weight: 800;
+        font-size: 24px;
+        margin-top: 24px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .section__subheader {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    .section__content {
+        div {
+            margin-left: 24px;
+        }
     }
 }
 
@@ -347,9 +429,6 @@ body {
 
 @media (max-width: 767px) {
     .main-container {
-        .logo {
-            display: none;
-        }
 
         .header {
             font-size: 16px;
@@ -410,13 +489,21 @@ body {
 
         .modal {
             .modal__content {
-                padding: 16px;
-                width: 90%;
+                width: 100%;
 
-                input {
-                    margin: 20px auto;
+                .modal__wrapper {
+                    padding: 0px 16px 16px 16px;
+
+                    input {
+                        margin: 20px auto;
+                    }
                 }
+
             }
         }
+    }
+
+    .pp__container {
+        padding: 16px 0;
     }
 }
