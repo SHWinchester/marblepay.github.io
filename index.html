@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Marble Pay</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <meta name="theme-color" content="#ffffff">
     <!-- <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="https://use.typekit.net/rbw7pzo.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script> -->
+    <!-- <script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script> -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!--     <script src="./typed.js/js/typed.js" charset="utf-8"></script>
     <script src="./clipboard.js/dist/clipboard.min.js" charset="utf-8"></script>
@@ -22,7 +26,7 @@
         <form action="https://marblepay.us4.list-manage.com/subscribe/post?u=ff5118d5f2d905b27119b841a&amp;id=ff551e4466" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div>
                 <div class="main-container">
-                    <img class="logo" src="./assets/logo.png">
+                    <div class="button__link" id="partner-button">Are you a partner?</div>
                     <div class="header">
                         <div>Welcome to</div>
                         <div class="header__text">MarblePay</div>
@@ -36,56 +40,59 @@
                         <div class="prompt">Request an account and earn an exclusive pre-launch bonus.</div>
                         <div class="mc-field-group">
                             <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="you@email.com">
-                        </div> 
+                        </div>
                         <div class="button__bordered" id="request-button">Request Account</div>
-                        <div class="button__link" id="partner-button">Are you a partner?</div>
                     </div>
                     <div class="footer">
-                        <div class="button__link footer__text"><a href="./assets/privacy_policy_marblepay.pdf" target="_blank" >Privacy Policy</a></div>
+                        <div class="button__link footer__text"><a href="./privacy-policy.html" target="_blank">Privacy Policy</a></div>
                         <div class="footer__text"> Interested in joining us as we fix a broken marketplace? Email <a href="mailto:recruiting@marblepay.com">recruiting@marblepay.com</a>.</div>
                         <div class="footer__text">
-                            <div>Designed by <a href="http://jonpackles.com/" target="_blank" >Jon Packles</a></div>
-                            <div>Built by <a href="http://soniaboller.com/" target="_blank" >Sonia Boller</a></div>
+                            <div>Designed by <a href="http://jonpackles.com/" target="_blank">Jon Packles</a></div>
+                            <div>Built by <a href="http://soniaboller.com/" target="_blank">Sonia Boller</a></div>
                         </div>
                     </div>
                     <div id="modal" class="modal">
                         <div class="vertical-align__helper">
                             <div class="vertical-align__center">
                                 <div class="modal__content">
-                                    <div id="partner-content">
-                                        <h5 class="header__modal">Welcome back, partners.</h5>
-                                        <input type="email" name="" placeholder="email" />
-                                        <input type="password" name="" placeholder="password" />
-                                        <div class="button__bordered">Sign In</div>
-                                        <div>
-                                            <p>Not a partner yet?</p>
-                                            <p>Contact <a href="mailto:partners@marblepay.com">partners@marblepay.com</a> to apply.</p>
-                                        </div>
-                                    </div>
-                                    <div id="request-content">
-                                        <h5 class="header__modal"> Request Received!</h5>
-                                        <p>Check your email to confirm, and tell us a little bit more about yourself, if you don't mind:</p>
-                                        <div class="request-info">
-                                            <div class="mc-field-group">
-                                                <label for="mce-NAME">What's your name? </label>
-                                                <input type="text" value="" name="NAME" class="" id="mce-NAME" placeholder="name">
-                                            </div>
-                                            <div class="mc-field-group">
-                                                <label for="mce-ZIP">Where do you live?</label>
-                                                <input type="text" value="" name="ZIP" class="" id="mce-ZIP" placeholder="zip code">
-                                            </div>
-                                            <div class="mc-field-group">
-                                                <label for="mce-CURINSUR">What insurance do you have currently? </label>
-                                                <input type="text" value="" name="CURINSUR" class="" id="mce-CURINSUR" placeholder="insurance">
+                                    <span id="close-button"></span>
+                                    <div class="modal__wrapper">
+                                        <div id="partner-content">
+                                            <h5 class="header__modal">Welcome back, partners.</h5>
+                                            <input type="email" name="" placeholder="email" />
+                                            <input type="password" name="" placeholder="password" />
+                                            <div id="no-account-alert">No partner account found!</div>
+                                            <div class="button__bordered" id="sign-in-button">Sign In</div>
+                                            <div>
+                                                <p>Not a partner yet?</p>
+                                                <p>Contact <a href="mailto:partners@marblepay.com">partners@marblepay.com</a> to apply.</p>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div id="mce-responses" class="clear">
-                                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                                <div class="response" id="mce-success-response" style="display:none"></div>
-                                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ff5118d5f2d905b27119b841a_ff551e4466" tabindex="-1" value=""></div>
-                                            <div><input class="button__bordered button__disabled"type="submit" value="Submit" name="submit" id="mc-embedded-subscribe" class="button"></div>
+                                        <div id="request-content">
+                                            <h5 class="header__modal"> Request Received!</h5>
+                                            <p>Check your email to confirm, and tell us a little bit more about yourself, if you don't mind:</p>
+                                            <div class="request-info">
+                                                <div class="mc-field-group">
+                                                    <label for="mce-NAME">What's your name? </label>
+                                                    <input type="text" value="" name="NAME" class="" id="mce-NAME" placeholder="name">
+                                                </div>
+                                                <div class="mc-field-group">
+                                                    <label for="mce-ZIP">Where do you live?</label>
+                                                    <input type="text" value="" name="ZIP" class="" id="mce-ZIP" placeholder="zip code">
+                                                </div>
+                                                <div class="mc-field-group">
+                                                    <label for="mce-CURINSUR">What insurance do you have currently? </label>
+                                                    <input type="text" value="" name="CURINSUR" class="" id="mce-CURINSUR" placeholder="insurance">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div id="mce-responses" class="clear">
+                                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                                </div> <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ff5118d5f2d905b27119b841a_ff551e4466" tabindex="-1" value=""></div>
+                                                <div><input class="button__bordered button__disabled" type="submit" value="Submit" name="submit" id="mc-embedded-subscribe" class="button"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -98,5 +105,19 @@
     </div>
 </body>
 <script src="scripts.js" charset="utf-8"></script>
+<script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>
+(function($) { window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'NAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'ZIP';
+    ftypes[2] = 'zip';
+    fnames[3] = 'CURINSUR';
+    ftypes[3] = 'text'; }(jQuery));
+var $mcj = jQuery.noConflict(true);
+</script>
 
 </html>
