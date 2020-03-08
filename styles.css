@@ -172,6 +172,7 @@ form input {
   height: 100%;
   overflow: hidden;
   font-size: 14px;
+  overflow-y: scroll;
 }
 .modal .vertical-align__helper {
   display: table;
