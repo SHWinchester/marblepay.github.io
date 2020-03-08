@@ -224,7 +224,7 @@ form {
         background-color: $color__black;
         opacity: 0.95;
         margin: 0 auto;
-        width: 35%;
+        width: 37%;
         text-align: center;
         pointer-events: all;
         border-radius: 10px;
@@ -245,7 +245,7 @@ form {
         }
 
         .modal__wrapper {
-            padding: 0px 80px 24px 80px;
+            padding: 0px 64px 24px 64px;
 
             .header__modal {
                 font-size: 30px;
@@ -365,6 +365,7 @@ form {
     }
 }
 
+
 @media (min-width: 768px) and (max-width: 1200px) {
     .header:hover {
         +.animation-content {
@@ -390,6 +391,13 @@ form {
         #circle-2 {
             bottom: -50% !important;
             right: -70% !important;
+        }
+    }
+    .modal__content {
+        width: 45% !important;
+
+        .modal__wrapper{
+            padding: 0px 48px 24px 48px !important;
         }
     }
 }
